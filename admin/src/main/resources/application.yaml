@@ -1,0 +1,15 @@
+server:
+  port: 8002
+
+spring:
+  datasource:
+    username: root
+    password: Wujunming
+    url: jdbc:mysql://localhost:3306/link?characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      connection-test-query: select 1
+      connection-timeout: 20000
+      idle-timeout: 300000
+      maximum-pool-size: 5
+      minimum-idle: 5
