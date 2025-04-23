@@ -64,8 +64,17 @@ public class UserController {
         return Results.success(userService.login(requestParam));
     }
 
-    @GetMapping("/api/short-link/v1/user/login")
-    public Result<Boolean> checkLogin(@RequestParam("token") String token){
-        return Results.success(userService.checkLogin(token));
+    @GetMapping("/api/short-link/v1/user/check-login")
+    public Result<Boolean> checkLogin(@RequestParam("username") String username, @RequestParam("token") String token) {
+        return Results.success(userService.checkLogin(username, token));
+    }
+
+    /**
+     * 用户退出登录
+     */
+    @DeleteMapping("/api/short-link/admin/v1/user/logout")
+    public Result<Void> logout(@RequestParam("username") String username, @RequestParam("token") String token) {
+        userService.logout(username, token);
+        return Results.success();
     }
 }

@@ -1,7 +1,7 @@
 package com.masonwu.shortlink.admin.dao.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.masonwu.shortlink.admin.database.BaseDO;
+import com.masonwu.shortlink.admin.common.database.BaseDO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

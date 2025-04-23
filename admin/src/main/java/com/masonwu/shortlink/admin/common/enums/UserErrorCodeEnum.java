@@ -1,4 +1,4 @@
-package com.masonwu.shortlink.admin.common.convention.enums;
+package com.masonwu.shortlink.admin.common.enums;
 
 import com.masonwu.shortlink.admin.common.convention.errorcode.IErrorCode;
 
