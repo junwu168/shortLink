@@ -3,8 +3,11 @@ package com.masonwu.shortlink.admin.controller;
 import cn.hutool.core.bean.BeanUtil;
 import com.masonwu.shortlink.admin.common.convention.result.Result;
 import com.masonwu.shortlink.admin.common.convention.result.Results;
+import com.masonwu.shortlink.admin.dto.req.UserLoginReqDTO;
 import com.masonwu.shortlink.admin.dto.req.UserRegisterReqDTO;
+import com.masonwu.shortlink.admin.dto.req.UserUpdateReqDTO;
 import com.masonwu.shortlink.admin.dto.resp.UserActualRespDTO;
+import com.masonwu.shortlink.admin.dto.resp.UserLoginRespDTO;
 import com.masonwu.shortlink.admin.dto.resp.UserRespDTO;
 import com.masonwu.shortlink.admin.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -43,5 +46,26 @@ public class UserController {
     public Result<Void> register(@RequestBody UserRegisterReqDTO requestParam) {
         userService.register(requestParam);
         return Results.success();
+    }
+
+    @PutMapping("/api/short-link/v1/user")
+    public Result<Void> update(@RequestBody UserUpdateReqDTO requestParam){
+        userService.update(requestParam);
+        return Results.success();
+    }
+
+    /**
+     * 用户登录
+     * @param requestParam
+     * @return
+     */
+    @PostMapping("/api/short-link/v1/user/login")
+    public Result<UserLoginRespDTO> login(@RequestBody UserLoginReqDTO requestParam){
+        return Results.success(userService.login(requestParam));
+    }
+
+    @GetMapping("/api/short-link/v1/user/login")
+    public Result<Boolean> checkLogin(@RequestParam("token") String token){
+        return Results.success(userService.checkLogin(token));
     }
 }
